@@ -8,6 +8,16 @@ type Insert struct {
 	value string
 }
 
+// NewInsert creates a new insert operation.
+func NewInsert(position int, value string) *Insert {
+	op := operation{
+		opType:   InsertType,
+		position: position,
+	}
+
+	return &Insert{op, value}
+}
+
 // Apply returns a modified copy of the current document string with the insert
 // operation applied.
 func (i Insert) Apply(current string) (string, error) {
@@ -38,6 +48,6 @@ func (i Insert) Transform(op Operation) Operation {
 
 // UpdatePosition returns a clone of the current operation with a new position.
 func (i Insert) UpdatePosition(pos int) Operation {
-	op := operation{id: i.id, opType: i.opType, position: pos}
+	op := operation{opType: i.opType, position: pos}
 	return &Insert{op, i.value}
 }

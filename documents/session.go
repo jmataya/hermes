@@ -1,16 +1,27 @@
 package documents
 
 import (
-	"fmt"
-
 	"github.com/jmataya/ot-editor/errors"
 )
 
 // Session represents a connection between a server and client.
 type Session struct {
-	doc             Document
+	doc             *Document
 	clientMessageID int
 	outgoing        []*Message
+}
+
+// NewSession initializes a new Session for an existing document.
+func NewSession(doc *Document) (*Session, error) {
+	if doc == nil {
+		return nil, errors.NewFieldIsNil("doc")
+	}
+
+	return &Session{
+		doc:             doc,
+		clientMessageID: 0,
+		outgoing:        []*Message{},
+	}, nil
 }
 
 // Receive handles a new message from the client and updates the document.
@@ -20,23 +31,27 @@ func (s *Session) Receive(msg *Message) error {
 	}
 
 	outgoing := []*Message{}
+	xformOp := msg.Operation
 
 	for _, srvMsg := range s.outgoing {
 		if srvMsg.ServerMessageID > msg.ServerMessageID {
 			outgoing = append(outgoing, srvMsg)
-
-			xformClient := srvMsg.Operation.Transform(msg.Operation)
-			fmt.Printf("%+v\n", xformClient)
+			xformOp = srvMsg.Operation.Transform(xformOp)
 		}
 	}
 
+	if err := s.doc.Apply(xformOp); err != nil {
+		return err
+	}
+
 	s.outgoing = outgoing
+	s.clientMessageID++
 
 	return nil
 }
 
 func (s *Session) validateMessage(msg *Message) error {
-	expectedClientID := msg.ClientMessageID + 1
+	expectedClientID := s.clientMessageID + 1
 	if msg.ClientMessageID != expectedClientID {
 		return errors.NewInvalidClientMessageID(expectedClientID, msg.ClientMessageID)
 	}

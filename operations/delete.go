@@ -7,6 +7,12 @@ type Delete struct {
 	operation
 }
 
+// NewDelete creates a new delete operation.
+func NewDelete(pos int) *Delete {
+	op := operation{opType: DeleteType, position: pos}
+	return &Delete{op}
+}
+
 // Apply returns a modified copy of the current document string with the delete
 // operation applied.
 func (d Delete) Apply(current string) (string, error) {
@@ -14,8 +20,8 @@ func (d Delete) Apply(current string) (string, error) {
 		return current, errors.NewNonExistentPosition(len(current), d.position)
 	}
 
-	head := current[0 : d.position-1]
-	tail := current[d.position:]
+	head := current[0:d.position]
+	tail := current[d.position+1:]
 	return head + tail, nil
 }
 
@@ -36,7 +42,7 @@ func (d Delete) Transform(op Operation) Operation {
 	}
 
 	if d.Position() == op.Position() && op.Type() == DeleteType {
-		return NewNoop(op.ID())
+		return NewNoop()
 	}
 
 	newPos := op.Position() - 1
@@ -45,6 +51,6 @@ func (d Delete) Transform(op Operation) Operation {
 
 // UpdatePosition returns a clone of the current operation with a new position.
 func (d Delete) UpdatePosition(pos int) Operation {
-	op := operation{id: d.id, opType: d.opType, position: pos}
+	op := operation{opType: d.opType, position: pos}
 	return &Delete{op}
 }

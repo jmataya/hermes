@@ -8,8 +8,8 @@ type Noop struct {
 }
 
 // NewNoop creates a new Noop operation.
-func NewNoop(id int) *Noop {
-	op := operation{id: id, opType: NoopType, position: 0}
+func NewNoop() *Noop {
+	op := operation{opType: NoopType, position: 0}
 	return &Noop{op}
 }
 

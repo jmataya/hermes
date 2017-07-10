@@ -11,11 +11,3 @@ type Message struct {
 	ClientMessageID int                  `json:"client_message_id"`
 	ServerMessageID int                  `json:"server_message_id"`
 }
-
-// Transform determines if a change is needed to an incoming message. If one is
-// needed, a new transformed message is created. Otherwise the original message
-// is returned
-func (m Message) Transform(msg *Message) *Message {
-
-	return msg
-}
