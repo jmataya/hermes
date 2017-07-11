@@ -1,14 +1,7 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/jmataya/hermes/documents"
-)
+import "github.com/jmataya/hermes/srv"
 
 func main() {
-	fmt.Println("Hello, world!")
-
-	doc := documents.NewDocument()
-	fmt.Printf("%+v\n", doc)
+	srv.Run()
 }
