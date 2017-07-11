@@ -1,6 +1,6 @@
 package documents
 
-import "github.com/jmataya/ot-editor/operations"
+import "github.com/jmataya/hermes/operations"
 
 // Message is the structure of communication between a client and the server.
 // It describes both the operation that occurred, as well as the indexes for

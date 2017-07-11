@@ -1,6 +1,6 @@
 package operations
 
-import "github.com/jmataya/ot-editor/errors"
+import "github.com/jmataya/hermes/errors"
 
 // Delete is an operation that removes a single character from the document.
 type Delete struct {

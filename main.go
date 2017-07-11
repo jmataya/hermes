@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/jmataya/ot-editor/documents"
+	"github.com/jmataya/hermes/documents"
 )
 
 func main() {

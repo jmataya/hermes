@@ -3,7 +3,7 @@ package documents
 import (
 	"testing"
 
-	"github.com/jmataya/ot-editor/operations"
+	"github.com/jmataya/hermes/operations"
 )
 
 func TestReceiveMessage(t *testing.T) {

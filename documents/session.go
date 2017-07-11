@@ -1,8 +1,6 @@
 package documents
 
-import (
-	"github.com/jmataya/ot-editor/errors"
-)
+import "github.com/jmataya/hermes/errors"
 
 // Session represents a connection between a server and client.
 type Session struct {

@@ -1,6 +1,6 @@
 package operations
 
-import "github.com/jmataya/ot-editor/errors"
+import "github.com/jmataya/hermes/errors"
 
 // Insert is an operation that represents inserting a string into a document.
 type Insert struct {

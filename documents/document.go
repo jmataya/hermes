@@ -1,6 +1,6 @@
 package documents
 
-import "github.com/jmataya/ot-editor/operations"
+import "github.com/jmataya/hermes/operations"
 
 // Document represents the structure, operations, and server state for a file.
 type Document struct {
