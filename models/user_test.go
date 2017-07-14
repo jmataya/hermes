@@ -9,7 +9,7 @@ import (
 )
 
 func TestCreateUser(t *testing.T) {
-	dsn := "user=hermes dbname=hermes_test sslmode=disable"
+	dsn := "user=postgres dbname=ci_test sslmode=disable"
 	db, err := sql.Open("postgres", dsn)
 	if err != nil {
 		t.Error(err)
@@ -64,7 +64,7 @@ func TestCreateUser(t *testing.T) {
 }
 
 func TestUpdateUser(t *testing.T) {
-	dsn := "user=hermes dbname=hermes_test sslmode=disable"
+	dsn := "user=postgres dbname=ci_test sslmode=disable"
 	db, err := sql.Open("postgres", dsn)
 	if err != nil {
 		t.Error(err)
