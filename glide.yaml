@@ -1,3 +1,4 @@
 package: github.com/jmataya/hermes
 import:
   - package: github.com/gorilla/websocket
+  - package: github.com/lib/pq
