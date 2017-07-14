@@ -3,13 +3,18 @@ language: go
 services:
   - postgresql
 
+before_install:
+  - sudo add-apt-repository ppa:masterminds/glide -y
+  - sudo apt-get update
+  - sudo apt-get install -y glide
+
 install: make install
 
 before_script:
-  - curl -L https://packagecloud.io/mattes/migrate/gpgkey | apt-key add -
-  - echo "deb https://packagecloud.io/mattes/migrate/ubuntu/ xenial main" > /etc/apt/sources.list.d/migrate.list
-  - apt-get update
-  - apt-get install -y migrate
+  - curl -L https://packagecloud.io/mattes/migrate/gpgkey | sudo apt-key add -
+  - echo "deb https://packagecloud.io/mattes/migrate/ubuntu/ xenial main" > sudo /etc/apt/sources.list.d/migrate.list
+  - sudo apt-get update
+  - sudo apt-get install -y migrate
   - psql -c 'create database ci_test;' -U postgres
   - migrate -database postgres://postgres@localhost:5432/ci_test -path sql up
 
