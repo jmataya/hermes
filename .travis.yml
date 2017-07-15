@@ -12,5 +12,6 @@ install: make install
 
 before_script:
   - psql -c 'create database ci_test;' -U postgres
+  - make migrate-ci
 
 script: make test
