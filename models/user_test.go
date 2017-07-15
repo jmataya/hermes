@@ -1,36 +1,21 @@
 package models
 
 import (
-	"database/sql"
 	"testing"
 
 	"github.com/icrowley/fake"
-	"github.com/jmataya/hermes/config"
 	"github.com/jmataya/hermes/errors"
 	_ "github.com/lib/pq"
 )
 
 func TestCreateUser(t *testing.T) {
-	dbConfig, err := config.NewDB()
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	dsn := dbConfig.PostgresDSN()
-	db, err := sql.Open("postgres", dsn)
+	db, err := InitializeDB()
 	if err != nil {
 		t.Error(err)
 		return
 	}
 
 	defer db.Close()
-
-	commonDB, err := NewDB(db)
-	if err != nil {
-		t.Error(err)
-		return
-	}
 
 	var tests = []struct {
 		model Model
@@ -66,20 +51,13 @@ func TestCreateUser(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		err := test.model.Create(commonDB)
+		err := test.model.Create(db)
 		checkErr(t, "Failed to create user", test.want, err)
 	}
 }
 
 func TestUpdateUser(t *testing.T) {
-	dbConfig, err := config.NewDB()
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	dsn := dbConfig.PostgresDSN()
-	db, err := sql.Open("postgres", dsn)
+	db, err := InitializeDB()
 	if err != nil {
 		t.Error(err)
 		return
@@ -87,23 +65,17 @@ func TestUpdateUser(t *testing.T) {
 
 	defer db.Close()
 
-	commonDB, err := NewDB(db)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
 	user := &User{
 		Email:     fake.EmailAddress(),
 		FirstName: fake.FirstName(),
 		LastName:  fake.LastName(),
 	}
 
-	err = user.Create(commonDB)
+	err = user.Create(db)
 	checkErr(t, "Failed to create user", nil, err)
 
 	user.FirstName = "New"
-	err = user.Update(commonDB)
+	err = user.Update(db)
 	checkErr(t, "Failed to update user", nil, err)
 }
 

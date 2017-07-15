@@ -1,5 +1,5 @@
-hash: aef2df9b31fee075a355f69f941d8e3abcf3bb03660f3f55f5c8251224e6d7a6
-updated: 2017-07-15T15:24:55.156711664-07:00
+hash: 08d5a7fdea1e1f8627e73fe2806e5c71226e15c79d0868b196d327e6f8b6628f
+updated: 2017-07-15T16:32:10.19282676-07:00
 imports:
 - name: github.com/go-yaml/yaml
   version: 3b4ad1db5b2a649883ff3782f5f9f6fb52be71af
@@ -7,6 +7,13 @@ imports:
   version: 462d5c5828f6203e4047c47be2920315937be380
 - name: github.com/icrowley/fake
   version: 84bff6d01560fb0b5a396ba29534e93fd00d09c6
+- name: github.com/labstack/echo
+  version: 7676f85ef9d4a50797e17b30c4b0b1cb3c7c532a
+- name: github.com/labstack/gommon
+  version: 1121fd3e243c202482226a7afe4dcd07ffc4139a
+  subpackages:
+  - color
+  - log
 - name: github.com/lib/pq
   version: 55196ec83d60d789e27b2627549bf00974a70084
   subpackages:
@@ -18,8 +25,25 @@ imports:
   - database/postgres
   - source
   - source/file
+- name: github.com/mattn/go-colorable
+  version: 941b50ebc6efddf4c41c8e4537a5f68a4e686b24
+- name: github.com/mattn/go-isatty
+  version: fc9e8d8ef48496124e79ae0df75490096eccf6fe
 - name: github.com/urfave/cli
   version: 9e5b04886c4bfee2ceba1465b8121057355c4e53
+- name: github.com/valyala/bytebufferpool
+  version: e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7
+- name: github.com/valyala/fasttemplate
+  version: dcecefd839c4193db0d35b88ec65b4c12d360ab0
+- name: golang.org/x/crypto
+  version: adbae1b6b6fb4b02448a0fc0dbbc9ba2b95b294d
+  subpackages:
+  - acme
+  - acme/autocert
+- name: golang.org/x/sys
+  version: a646d33e2ee3172a661fc09bca23bb4889a41bc8
+  subpackages:
+  - unix
 - name: gopkg.in/yaml.v2
   version: e4d366fc3c7938e2958e662b4258c7a89e1f0e3e
 testImports: []

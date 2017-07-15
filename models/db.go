@@ -3,6 +3,7 @@ package models
 import (
 	"database/sql"
 
+	"github.com/jmataya/hermes/config"
 	"github.com/jmataya/hermes/errors"
 )
 
@@ -10,13 +11,32 @@ import (
 // error handling logic, allowing for easier code maintenance in application
 // code.
 type DB interface {
+	Close() error
 	Error() error
+
 	Prepare(string) *sql.Stmt
 	QueryRow(string, ...interface{}) *sql.Row
 
 	RowScan(*sql.Row, ...interface{})
 
 	StmtExec(*sql.Stmt, ...interface{}) sql.Result
+}
+
+// InitializeDB opens a new DB connection with the database and wraps it in
+// Hermes DB helpers.
+func InitializeDB() (DB, error) {
+	dbConfig, err := config.NewDB()
+	if err != nil {
+		return nil, err
+	}
+
+	dsn := dbConfig.PostgresDSN()
+	db, err := sql.Open("postgres", dsn)
+	if err != nil {
+		return nil, err
+	}
+
+	return NewDB(db)
 }
 
 // NewDB creates an new DB from an existing sql/db.
@@ -31,6 +51,10 @@ func NewDB(db *sql.DB) (DB, error) {
 type sqlDB struct {
 	db  *sql.DB
 	err error
+}
+
+func (s *sqlDB) Close() error {
+	return s.db.Close()
 }
 
 func (s *sqlDB) Error() error {
