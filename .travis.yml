@@ -15,4 +15,4 @@ before_script:
   - cp config/db.yml.example config/db.yml
   - make migrate-ci
 
-script: make test
+script: make test-ci
