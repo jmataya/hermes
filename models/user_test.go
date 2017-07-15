@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"testing"
 
+	"github.com/icrowley/fake"
 	"github.com/jmataya/hermes/config"
 	"github.com/jmataya/hermes/errors"
 	_ "github.com/lib/pq"
@@ -38,9 +39,9 @@ func TestCreateUser(t *testing.T) {
 		{
 			model: &User{
 				id:        0,
-				Email:     "test@test.com",
-				FirstName: "Test",
-				LastName:  "User",
+				Email:     fake.EmailAddress(),
+				FirstName: fake.FirstName(),
+				LastName:  fake.LastName(),
 			},
 			want: nil,
 		},
@@ -48,17 +49,17 @@ func TestCreateUser(t *testing.T) {
 			model: &User{
 				id:        0,
 				Email:     "",
-				FirstName: "Test",
-				LastName:  "User",
+				FirstName: fake.FirstName(),
+				LastName:  fake.LastName(),
 			},
 			want: errors.NewFieldIsNil("email"),
 		},
 		{
 			model: &User{
 				id:        1,
-				Email:     "test@test.com",
-				FirstName: "Test",
-				LastName:  "User",
+				Email:     fake.EmailAddress(),
+				FirstName: fake.FirstName(),
+				LastName:  fake.LastName(),
 			},
 			want: errors.NewModelHasID("user", 1),
 		},
@@ -93,9 +94,9 @@ func TestUpdateUser(t *testing.T) {
 	}
 
 	user := &User{
-		Email:     "test@test.com",
-		FirstName: "test",
-		LastName:  "User",
+		Email:     fake.EmailAddress(),
+		FirstName: fake.FirstName(),
+		LastName:  fake.LastName(),
 	}
 
 	err = user.Create(commonDB)

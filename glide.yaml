@@ -6,3 +6,4 @@ import:
   - package: github.com/mattes/migrate/database/postgres
   - package: github.com/urfave/cli
   - package: github.com/go-yaml/yaml
+  - package: github.com/icrowley/fake

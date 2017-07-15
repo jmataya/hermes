@@ -1,10 +1,12 @@
-hash: e84f43883ee2cdc2b71130d7040b02bb2edf3ae08de6af7607b7c7b045ca1e7b
-updated: 2017-07-15T12:33:31.76591429-07:00
+hash: aef2df9b31fee075a355f69f941d8e3abcf3bb03660f3f55f5c8251224e6d7a6
+updated: 2017-07-15T15:24:55.156711664-07:00
 imports:
 - name: github.com/go-yaml/yaml
   version: 3b4ad1db5b2a649883ff3782f5f9f6fb52be71af
 - name: github.com/gorilla/websocket
   version: 462d5c5828f6203e4047c47be2920315937be380
+- name: github.com/icrowley/fake
+  version: 84bff6d01560fb0b5a396ba29534e93fd00d09c6
 - name: github.com/lib/pq
   version: 55196ec83d60d789e27b2627549bf00974a70084
   subpackages:
@@ -18,4 +20,6 @@ imports:
   - source/file
 - name: github.com/urfave/cli
   version: 9e5b04886c4bfee2ceba1465b8121057355c4e53
+- name: gopkg.in/yaml.v2
+  version: e4d366fc3c7938e2958e662b4258c7a89e1f0e3e
 testImports: []
