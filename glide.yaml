@@ -2,3 +2,6 @@ package: github.com/jmataya/hermes
 import:
   - package: github.com/gorilla/websocket
   - package: github.com/lib/pq
+  - package: github.com/mattes/migrate
+  - package: github.com/mattes/migrate/database/postgres
+  - package: github.com/urfave/cli

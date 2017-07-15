@@ -11,11 +11,6 @@ before_install:
 install: make install
 
 before_script:
-  - curl -L https://packagecloud.io/mattes/migrate/gpgkey | sudo apt-key add -
-  - echo "deb https://packagecloud.io/mattes/migrate/ubuntu/ xenial main" > sudo /etc/apt/sources.list.d/migrate.list
-  - sudo apt-get update
-  - sudo apt-get install -y migrate
   - psql -c 'create database ci_test;' -U postgres
-  - migrate -database postgres://postgres@localhost:5432/ci_test -path sql up
 
 script: make test

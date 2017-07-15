@@ -1,6 +1,19 @@
-hash: 00bbd753b7367cce5bd10ada8b82cf2f9320bfd7fa0daf1b222692d5ef941f29
-updated: 2017-07-11T08:45:12.433037716-04:00
+hash: 6c8d93436d133864ce34f7dc82b27b9846de0d67136bbc118aa07569268bf27d
+updated: 2017-07-15T11:37:00.769233011-07:00
 imports:
 - name: github.com/gorilla/websocket
   version: 462d5c5828f6203e4047c47be2920315937be380
+- name: github.com/lib/pq
+  version: 55196ec83d60d789e27b2627549bf00974a70084
+  subpackages:
+  - oid
+- name: github.com/mattes/migrate
+  version: 8e6084bc9ceccbbf8d9c40d9ce8a5532194cb42b
+  subpackages:
+  - database
+  - database/postgres
+  - source
+  - source/file
+- name: github.com/urfave/cli
+  version: 9e5b04886c4bfee2ceba1465b8121057355c4e53
 testImports: []
