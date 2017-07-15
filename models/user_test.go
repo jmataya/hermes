@@ -11,7 +11,7 @@ import (
 )
 
 func TestCreateUser(t *testing.T) {
-	dbConfig, err := config.NewDB("test")
+	dbConfig, err := config.NewDB()
 	if err != nil {
 		t.Error(err)
 		return
@@ -72,7 +72,7 @@ func TestCreateUser(t *testing.T) {
 }
 
 func TestUpdateUser(t *testing.T) {
-	dbConfig, err := config.NewDB("test")
+	dbConfig, err := config.NewDB()
 	if err != nil {
 		t.Error(err)
 		return

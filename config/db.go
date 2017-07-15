@@ -1,7 +1,6 @@
 package config
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -30,9 +29,10 @@ type DB struct {
 
 // NewDB loads db.yml and parses the settings based on the environment
 // specified.
-func NewDB(env string) (*DB, error) {
+func NewDB() (*DB, error) {
+	env := os.Getenv("GOENV")
 	if env == "" {
-		return nil, errors.New("env must be non-empty")
+		env = "dev"
 	}
 
 	workingDir, err := os.Getwd()
