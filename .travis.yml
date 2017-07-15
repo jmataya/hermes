@@ -11,7 +11,8 @@ before_install:
 install: make install
 
 before_script:
-  - psql -c 'create database ci_test;' -U postgres
+  - psql -c 'create database hermes_ci_test;' -U postgres
+  - cp config/db.yml.example config/db.yml
   - make migrate-ci
 
 script: make test

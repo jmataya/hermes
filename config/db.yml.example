@@ -1,0 +1,11 @@
+---
+
+dev:
+  name: hermes
+  user: postgres
+test:
+  name: hermes_test
+  user: postgres
+ci:
+  name: hermes_ci_test
+  name: postgres

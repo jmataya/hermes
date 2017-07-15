@@ -1,6 +1,8 @@
-hash: 6c8d93436d133864ce34f7dc82b27b9846de0d67136bbc118aa07569268bf27d
-updated: 2017-07-15T11:37:00.769233011-07:00
+hash: e84f43883ee2cdc2b71130d7040b02bb2edf3ae08de6af7607b7c7b045ca1e7b
+updated: 2017-07-15T12:33:31.76591429-07:00
 imports:
+- name: github.com/go-yaml/yaml
+  version: 3b4ad1db5b2a649883ff3782f5f9f6fb52be71af
 - name: github.com/gorilla/websocket
   version: 462d5c5828f6203e4047c47be2920315937be380
 - name: github.com/lib/pq

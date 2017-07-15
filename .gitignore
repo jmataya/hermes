@@ -2,3 +2,4 @@
 hermes
 main
 vendor/*
+config/db.yml

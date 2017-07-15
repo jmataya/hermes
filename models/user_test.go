@@ -4,12 +4,19 @@ import (
 	"database/sql"
 	"testing"
 
+	"github.com/jmataya/hermes/config"
 	"github.com/jmataya/hermes/errors"
 	_ "github.com/lib/pq"
 )
 
 func TestCreateUser(t *testing.T) {
-	dsn := "user=postgres dbname=ci_test sslmode=disable"
+	dbConfig, err := config.NewDB("test")
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	dsn := dbConfig.PostgresDSN()
 	db, err := sql.Open("postgres", dsn)
 	if err != nil {
 		t.Error(err)
@@ -64,7 +71,13 @@ func TestCreateUser(t *testing.T) {
 }
 
 func TestUpdateUser(t *testing.T) {
-	dsn := "user=postgres dbname=ci_test sslmode=disable"
+	dbConfig, err := config.NewDB("test")
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	dsn := dbConfig.PostgresDSN()
 	db, err := sql.Open("postgres", dsn)
 	if err != nil {
 		t.Error(err)
