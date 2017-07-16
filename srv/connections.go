@@ -5,12 +5,12 @@ import (
 	"net/http"
 
 	"github.com/gorilla/websocket"
-	"github.com/jmataya/hermes/documents"
+	"github.com/jmataya/hermes/models"
 )
 
 // TODO: Move this into a better structure.
 var clients = make(map[*websocket.Conn]bool)
-var broadcast = make(chan documents.Message)
+var broadcast = make(chan models.Message)
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
@@ -30,7 +30,7 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 	clients[ws] = true
 
 	for {
-		var msg documents.Message
+		var msg models.Message
 		err := ws.ReadJSON(&msg)
 		if err != nil {
 			log.Printf("error: %v", err)

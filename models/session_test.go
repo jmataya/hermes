@@ -1,4 +1,4 @@
-package documents
+package models
 
 import (
 	"testing"

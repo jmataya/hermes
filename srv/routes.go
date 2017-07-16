@@ -1,9 +1,7 @@
 package srv
 
-import "github.com/jmataya/hermes/utils"
-
-func routes() *utils.Router {
-	r := utils.NewRouter()
+func routes() *Router {
+	r := NewRouter()
 	r.POST("/registrations", createRegistration)
 	return r
 }

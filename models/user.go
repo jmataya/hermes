@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/jmataya/hermes/errors"
+	"github.com/jmataya/hermes/utils"
 )
 
 // User represents an entity in the system that can interact with files, either
@@ -33,7 +34,7 @@ func (u *User) Validate() error {
 }
 
 // Create inserts the user into the database.
-func (u *User) Create(db DB) error {
+func (u *User) Create(db utils.DB) error {
 	const insert = `
     INSERT INTO users (email, first_name, last_name, created_at, updated_at)
     VALUES ($1, $2, $3, $4, $5)
@@ -67,7 +68,7 @@ func (u *User) Create(db DB) error {
 	return db.Error()
 }
 
-func (u *User) Update(db DB) error {
+func (u *User) Update(db utils.DB) error {
 	const update = `
     UPDATE users
     SET email=$1, first_name=$2, last_name=$3, updated_at=$4
@@ -98,7 +99,7 @@ func (u *User) Update(db DB) error {
 	return db.Error()
 }
 
-func (u *User) Delete(db DB) error {
+func (u *User) Delete(db utils.DB) error {
 	const delete = "DELETE FROM users WHERE id=$1"
 
 	if u.id == 0 {

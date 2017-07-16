@@ -1,4 +1,4 @@
-package utils
+package srv
 
 import "github.com/labstack/echo"
 

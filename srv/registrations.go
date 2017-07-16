@@ -1,12 +1,8 @@
 package srv
 
-import (
-	"net/http"
+import "net/http"
 
-	"github.com/jmataya/hermes/utils"
-)
-
-func createRegistration(c *utils.RequestContext) error {
+func createRegistration(c *RequestContext) error {
 	resp := map[string]string{
 		"message": "okay",
 	}

@@ -5,11 +5,12 @@ import (
 
 	"github.com/icrowley/fake"
 	"github.com/jmataya/hermes/errors"
+	"github.com/jmataya/hermes/utils"
 	_ "github.com/lib/pq"
 )
 
 func TestCreateUser(t *testing.T) {
-	db, err := InitializeDB()
+	db, err := utils.InitializeDB()
 	if err != nil {
 		t.Error(err)
 		return
@@ -57,7 +58,7 @@ func TestCreateUser(t *testing.T) {
 }
 
 func TestUpdateUser(t *testing.T) {
-	db, err := InitializeDB()
+	db, err := utils.InitializeDB()
 	if err != nil {
 		t.Error(err)
 		return
