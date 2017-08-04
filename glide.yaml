@@ -7,5 +7,4 @@ import:
   - package: github.com/urfave/cli
   - package: github.com/go-yaml/yaml
   - package: github.com/icrowley/fake
-  - package: github.com/labstack/echo
-  - package: github.com/labstack/gommon
+  - package: github.com/jmataya/nile

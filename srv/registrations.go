@@ -1,11 +1,13 @@
 package srv
 
-import "net/http"
+import (
+	"net/http"
 
-func createRegistration(c *RequestContext) error {
-	resp := map[string]string{
-		"message": "okay",
-	}
+	"github.com/jmataya/nile"
+)
 
-	return c.JSON(http.StatusOK, resp)
+func createRegistration(c nile.Context) nile.Response {
+	msg := map[string]string{"message": "registration!"}
+	resp := nile.NewGenericResponse(http.StatusOK, msg)
+	return resp
 }

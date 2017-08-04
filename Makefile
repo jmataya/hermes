@@ -12,6 +12,7 @@ migrate-test:
 
 reset:
 	dropdb --if-exists hermes
+	dropdb --if-exists hermes_test
 	dropuser --if-exists hermes
 	createuser hermes
 	createdb hermes

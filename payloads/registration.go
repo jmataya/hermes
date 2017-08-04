@@ -1,6 +1,9 @@
 package payloads
 
 import "github.com/jmataya/hermes/errors"
+import "github.com/jmataya/nile"
+
+const regPayloadCode = "70001"
 
 // CreateRegistration is the payload needed to register a user in the system.
 type CreateRegistration struct {
@@ -11,16 +14,20 @@ type CreateRegistration struct {
 }
 
 // Validate ensures that the payload is in a valid state.
-func (c CreateRegistration) Validate() error {
+func (c CreateRegistration) Validate() *nile.ErrorResponse {
 	if c.Email == "" {
-		return errors.NewFieldIsNil("email")
+		return c.nilFieldError("email")
 	} else if c.Password == "" {
-		return errors.NewFieldIsNil("password")
+		return c.nilFieldError("password")
 	} else if c.FirstName != nil && *c.FirstName == "" {
-		return errors.NewFieldIsNil("first_name")
+		return c.nilFieldError("first_name")
 	} else if c.LastName != nil && *c.LastName == "" {
-		return errors.NewFieldIsNil("last_name")
+		return c.nilFieldError("last_name")
 	}
 
 	return nil
+}
+
+func (c CreateRegistration) nilFieldError(field string) *nile.ErrorResponse {
+	return nile.NewBadRequest(regPayloadCode, errors.NewFieldIsNil(field))
 }

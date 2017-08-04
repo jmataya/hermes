@@ -1,7 +1,9 @@
 package srv
 
-func routes() *Router {
-	r := NewRouter()
+import "github.com/jmataya/nile"
+
+func routes() nile.Router {
+	r := nile.New()
 	r.POST("/registrations", createRegistration)
 	return r
 }
